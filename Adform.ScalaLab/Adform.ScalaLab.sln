@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.40629.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Adform.ScalaLab.Segmentation", "Adform.ScalaLab.Segmentation\Adform.ScalaLab.Segmentation.csproj", "{D2733988-1B31-41BE-A4CC-3AAB17AE9BCC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Adform.ScalaLab.Segmentation.Tests", "Adform.ScalaLab.Segmentation.Tests\Adform.ScalaLab.Segmentation.Tests.csproj", "{EB8DBEAB-DD11-490A-814F-AEB0F0036156}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Adform.ScalaLab.Segmentation.Console", "Adform.ScalaLab.Segmentation.Console\Adform.ScalaLab.Segmentation.Console.csproj", "{486BFF29-7F1E-4126-B26E-CCA6892D5893}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D2733988-1B31-41BE-A4CC-3AAB17AE9BCC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D2733988-1B31-41BE-A4CC-3AAB17AE9BCC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D2733988-1B31-41BE-A4CC-3AAB17AE9BCC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D2733988-1B31-41BE-A4CC-3AAB17AE9BCC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EB8DBEAB-DD11-490A-814F-AEB0F0036156}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EB8DBEAB-DD11-490A-814F-AEB0F0036156}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EB8DBEAB-DD11-490A-814F-AEB0F0036156}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EB8DBEAB-DD11-490A-814F-AEB0F0036156}.Release|Any CPU.Build.0 = Release|Any CPU
+		{486BFF29-7F1E-4126-B26E-CCA6892D5893}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{486BFF29-7F1E-4126-B26E-CCA6892D5893}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{486BFF29-7F1E-4126-B26E-CCA6892D5893}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{486BFF29-7F1E-4126-B26E-CCA6892D5893}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
