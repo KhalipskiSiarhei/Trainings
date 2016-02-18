@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.Design;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -14,15 +15,20 @@ namespace Adform.ScalaLab.Segmentation
     {
         public void Process(string pathToRanges, string pathToTransactions, string processedFilePath="results.tsv")
         {
+            var stopwatch = new Stopwatch();
+
             // Build tree
+            stopwatch.Start();
             var searchTree = BuildSegmentsSearchTree(pathToRanges);
+            stopwatch.Stop();
+            Console.WriteLine("Building of binary search tree time: {0}s", stopwatch.Elapsed.TotalSeconds);
 
             // Create empty result file
+            stopwatch.Start();
             if (File.Exists(processedFilePath))
             {
                 File.Delete(processedFilePath);
             }
-
             using (var writer = File.CreateText(processedFilePath))
             {
                 // Open transactions file
@@ -68,13 +74,15 @@ namespace Adform.ScalaLab.Segmentation
                     writer.Close();
                 }
             }
+            stopwatch.Stop();
+            Console.WriteLine("Processing transactions time: {0}s", stopwatch.Elapsed.TotalSeconds);
         }
 
         private IBinarySearchSegmentTree BuildSegmentsSearchTree(string pathToRanges)
         {
             var loader = new FileSegmentsLoader(pathToRanges);
             var tree = new BinarySegmentTree();
-
+            
             loader.Open();
             try
             {
@@ -85,7 +93,6 @@ namespace Adform.ScalaLab.Segmentation
             {
                 loader.Close();
             }
-
             return tree;
         }
     }
