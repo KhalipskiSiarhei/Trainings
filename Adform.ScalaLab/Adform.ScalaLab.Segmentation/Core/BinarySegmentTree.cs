@@ -66,6 +66,20 @@ namespace Adform.ScalaLab.Segmentation.Core
             return null;
         }
 
+        public BinarySearchTreeHeight GetHeight()
+        {
+            var treeHeight = new BinarySearchTreeHeight();
+
+            if (_root == null)
+            {
+                return treeHeight;
+            }
+
+            treeHeight.MinHeight = GetMinHeight(_root, 0);
+            treeHeight.MaxHeight = GetMaxHeight(_root, 0);
+            return treeHeight;
+        }
+
         private void DoInsert(SegmentTreeNode top, Segment segment)
         {
             var compareResult = segment.Range.CompareTo(top.Range);
@@ -145,6 +159,74 @@ namespace Adform.ScalaLab.Segmentation.Core
                 return DoFind(top.Right, ip);
             }
             return null;
+        }
+
+        private int GetMinHeight(SegmentTreeNode top, int currentHeight)
+        {
+            int? leftTreeHeight = null;
+            int? rightTreeHeight = null;
+
+            if (top.Left == null && top.Right == null)
+            {
+                return currentHeight + 1;
+            }
+            if (top.Left != null)
+            {
+                leftTreeHeight = GetMinHeight(top.Left, currentHeight + 1);
+            }
+            if (top.Right != null)
+            {
+                rightTreeHeight = GetMinHeight(top.Right, currentHeight + 1);
+            }
+
+            if (leftTreeHeight.HasValue && rightTreeHeight.HasValue)
+            {
+                return leftTreeHeight.Value > rightTreeHeight.Value ? rightTreeHeight.Value : leftTreeHeight.Value;
+            }
+            else if (leftTreeHeight.HasValue)
+            {
+                return leftTreeHeight.Value;
+            }
+            else if (rightTreeHeight.HasValue)
+            {
+                return rightTreeHeight.Value;
+            }
+
+            throw new InvalidOperationException("The current tree structure is not supported to calculate tree height");
+        }
+
+        private int GetMaxHeight(SegmentTreeNode top, int currentHeight)
+        {
+            int? leftTreeHeight = null;
+            int? rightTreeHeight = null;
+
+            if (top.Left == null && top.Right == null)
+            {
+                return currentHeight + 1;
+            }
+            if (top.Left != null)
+            {
+                leftTreeHeight = GetMaxHeight(top.Left, currentHeight + 1);
+            }
+            if (top.Right != null)
+            {
+                rightTreeHeight = GetMaxHeight(top.Right, currentHeight + 1);
+            }
+
+            if (leftTreeHeight.HasValue && rightTreeHeight.HasValue)
+            {
+                return leftTreeHeight.Value > rightTreeHeight.Value ? leftTreeHeight.Value : rightTreeHeight.Value;
+            }
+            else if (leftTreeHeight.HasValue)
+            {
+                return leftTreeHeight.Value;
+            }
+            else if (rightTreeHeight.HasValue)
+            {
+                return rightTreeHeight.Value;
+            }
+
+            throw new InvalidOperationException("The current tree structure is not supported to calculate tree height");
         }
     }
 }

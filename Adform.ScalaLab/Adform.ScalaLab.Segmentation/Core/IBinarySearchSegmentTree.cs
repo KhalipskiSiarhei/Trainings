@@ -10,5 +10,7 @@ namespace Adform.ScalaLab.Segmentation.Core
     public interface IBinarySearchSegmentTree
     {
         List<string> FindSegmentsNamesById(long ip);
+
+        BinarySearchTreeHeight GetHeight();
     }
 }

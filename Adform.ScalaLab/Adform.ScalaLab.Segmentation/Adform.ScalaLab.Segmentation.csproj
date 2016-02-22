@@ -39,6 +39,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Core\BinarySearchTreeHeight.cs" />
     <Compile Include="Core\BinarySegmentTree.cs" />
     <Compile Include="Core\IBinarySearchSegmentTree.cs" />
     <Compile Include="Core\ITransactionsLoader.cs" />

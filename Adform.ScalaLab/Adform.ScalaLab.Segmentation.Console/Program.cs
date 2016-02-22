@@ -17,15 +17,19 @@ namespace Adform.ScalaLab.Segmentation.Console
                 var pathToTransactions = args.Length > 1 ? args[1] : "transactions.tsv";
                 var pathToResults = args.Length > 2 ? args[2] : "results.tsv";
 
-                System.Console.Write(
-                    "it is started processing: pathToRanges: {0}; pathToTransactions: {1}; pathToResults: {2}",
+                System.Console.WriteLine(
+                    "Start: pathToRanges: {0}; pathToTransactions: {1}; pathToResults: {2}",
                     pathToRanges, pathToTransactions, pathToResults);
                 processor.Process(pathToRanges, pathToTransactions, pathToResults);
-                System.Console.Write("Processing has been finished!");
+                System.Console.WriteLine("Finished! The results are in {0}. Press any key to exit", pathToResults);
             }
             catch (Exception ex)
             {
                 System.Console.Write(ex);
+            }
+            finally
+            {
+                System.Console.ReadKey();
             }
         }
     }

@@ -23,6 +23,10 @@ namespace Adform.ScalaLab.Segmentation
             stopwatch.Stop();
             Console.WriteLine("Building of binary search tree time: {0}s", stopwatch.Elapsed.TotalSeconds);
 
+            var treeHeight = searchTree.GetHeight();
+            Console.WriteLine("Is tree balanced: {0}; MinHeight: {1}; MaxHeight: {2}", treeHeight.IsBalanced,
+                treeHeight.MinHeight, treeHeight.MaxHeight);
+
             // Create empty result file
             stopwatch.Start();
             if (File.Exists(processedFilePath))
