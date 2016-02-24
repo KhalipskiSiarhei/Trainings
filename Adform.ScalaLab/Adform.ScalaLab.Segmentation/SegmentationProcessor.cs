@@ -21,11 +21,7 @@ namespace Adform.ScalaLab.Segmentation
             stopwatch.Start();
             var searchTree = BuildSegmentsSearchTree(pathToRanges);
             stopwatch.Stop();
-            Console.WriteLine("Building of binary search tree time: {0}s", stopwatch.Elapsed.TotalSeconds);
-
-            var treeHeight = searchTree.GetHeight();
-            Console.WriteLine("Is tree balanced: {0}; MinHeight: {1}; MaxHeight: {2}", treeHeight.IsBalanced,
-                treeHeight.MinHeight, treeHeight.MaxHeight);
+            Console.WriteLine("Total balanced search tree building time: {0}s", stopwatch.Elapsed.TotalSeconds);
 
             // Create empty result file
             stopwatch.Start();
@@ -79,7 +75,7 @@ namespace Adform.ScalaLab.Segmentation
                 }
             }
             stopwatch.Stop();
-            Console.WriteLine("Processing transactions time: {0}s", stopwatch.Elapsed.TotalSeconds);
+            Console.WriteLine("Total processing transactions time: {0}s", stopwatch.Elapsed.TotalSeconds);
         }
 
         private IBinarySearchSegmentTree BuildSegmentsSearchTree(string pathToRanges)
@@ -97,6 +93,10 @@ namespace Adform.ScalaLab.Segmentation
             {
                 loader.Close();
             }
+            Console.WriteLine("...Search tree was built from file");
+
+            tree.BalanceWithDSV();
+            Console.WriteLine("...Search tree was balanced with DSV algorithm and became balanced search tree");
             return tree;
         }
     }
